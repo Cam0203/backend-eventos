@@ -343,14 +343,14 @@ INSERT INTO USUARIO
 VALUES
 ('Juan', NULL, 'Rodriguez', 'Lopez', 'juan@uni.edu.co', '123456', '3011111111', 3, 1),
 ('Laura', 'Sofia', 'Mendez', 'Garcia', 'laura@uni.edu.co', '123456', '3011111112', 1, 2),
-('Pedro', NULL, 'Castro', 'Diaz', 'pedro@uni.edu.co', '123456', '3011111113', 1, 1),
+('Pedro', NULL, 'Castro', 'Diaz', 'pedro@uni.edu.co', '123456', '3011111113', 5, 1),
 ('Camila', 'Andrea', 'Suarez', 'Perez', 'camila@uni.edu.co', '123456', '3011111114', 1, 3),
 ('Andres', NULL, 'Vargas', 'Torres', 'andres@uni.edu.co', '123456', '3011111115', 1, 4),
 ('Sofia', NULL, 'Rojas', 'Mejia', 'sofia@uni.edu.co', '123456', '3011111116', 1, 5),
 ('Miguel', NULL, 'Herrera', 'Lozano', 'miguel@uni.edu.co', '123456', '3011111117', 1, 1),
 ('Valentina', NULL, 'Pardo', 'Silva', 'valen@uni.edu.co', '123456', '3011111118', 1, 2),
 ('Daniel', 'Alberto', 'Moreno', 'Gil', 'daniel@uni.edu.co', '123456', '3011111119', 2, 3),
-('Paula', NULL, 'Cortes', 'Reyes', 'paula@uni.edu.co', '123456', '3011111120', 1, 4),
+('Paula', NULL, 'Cortes', 'Reyes', 'paula@uni.edu.co', '123456', '3011111120', 5, 4),
 ('David', NULL, 'Navarro', 'Rios', 'david@uni.edu.co', '123456', '3011111121', 3, 5),
 ('Sara', 'Maria', 'Leal', 'Sanchez', 'sara@uni.edu.co', '123456', '3011111122', 1, 1),
 ('Julian', NULL, 'Campos', 'Ortiz', 'julian@uni.edu.co', '123456', '3011111123', 1, 2),
@@ -358,7 +358,7 @@ VALUES
 ('Kevin', NULL, 'Duran', 'Quintero', 'kevin@uni.edu.co', '123456', '3011111125', 1, 4),
 ('Daniela', 'Andrea', 'Mora', 'Rueda', 'daniela@uni.edu.co', '123456', '3011111126', 1, 5),
 ('Sebastian', NULL, 'Ortega', 'Nieto', 'sebastian@uni.edu.co', '123456', '3011111127', 1, 1),
-('Isabella', NULL, 'Cabrera', 'Pineda', 'isa@uni.edu.co', '123456', '3011111128', 1, 2),
+('Isabella', NULL, 'Cabrera', 'Pineda', 'isa@uni.edu.co', '123456', '3011111128', 5, 2),
 ('Tomas', 'Enrique', 'Guerra', 'Ochoa', 'tomas@uni.edu.co', '123456', '3011111129', 3, 3),
 ('Lucia', NULL, 'Alvarez', 'Bermudez', 'lucia@uni.edu.co', '123456', '3011111130', 1, 4);
 
