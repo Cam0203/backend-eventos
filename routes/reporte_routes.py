@@ -19,8 +19,16 @@ def generar_reporte(
     cursor = conn.cursor()
 
     query = """
-        SELECT nombre, fecha, hora, modalidad, estado, cupo_max
-        FROM evento
+        SELECT 
+            e.nombre,
+            e.fecha,
+            e.hora,
+            e.modalidad,
+            e.estado,
+            e.cupo_max,
+            COUNT(i.id) AS inscritos
+        FROM evento e
+        LEFT JOIN inscripcion i ON e.id = i.id_evento
         WHERE 1=1
     """
 
@@ -42,7 +50,10 @@ def generar_reporte(
         query += " AND cupo_max = %s"
         params.append(cupo_max)
 
-    query += " ORDER BY fecha ASC"
+    query += """
+        GROUP BY 
+            e.nombre, e.fecha, e.hora, e.modalidad, e.estado, e.cupo_max
+    """
 
     cursor.execute(query, params)
     eventos = cursor.fetchall()
@@ -66,41 +77,21 @@ def generar_reporte(
     c.setFont("Helvetica", 9)
     c.drawString(50, height - 65, "Sistema de Gestión de Eventos Académicos")
 
-    # Filtros usados
-    y = height - 110
-
-    c.setFillColor(colors.black)
-    c.setFont("Helvetica-Bold", 11)
-    c.drawString(50, y, "Filtros aplicados:")
-
-    y -= 18
-    c.setFont("Helvetica", 9)
-
-    filtros = [
-        f"Estado: {estado if estado else 'Todos'}",
-        f"Fecha: {fecha if fecha else 'Todas'}",
-        f"Modalidad: {modalidad if modalidad else 'Todas'}",
-        f"Cupo máximo: {cupo_max if cupo_max else 'Todos'}"
-    ]
-
-    for filtro in filtros:
-        c.drawString(50, y, filtro)
-        y -= 14
-
-    y -= 10
+    # Inicio de tabla
+    y = height - 120
 
     # Encabezado tabla
     c.setFillColor(colors.HexColor("#f59e0b"))
-    c.rect(40, y - 5, 530, 22, fill=True, stroke=False)
+    c.rect(50, y - 5, 500, 22, fill=True, stroke=False)
 
     c.setFillColor(colors.white)
     c.setFont("Helvetica-Bold", 9)
-    c.drawString(45, y, "Nombre")
-    c.drawString(185, y, "Fecha")
-    c.drawString(250, y, "Hora")
-    c.drawString(310, y, "Modalidad")
-    c.drawString(390, y, "Estado")
-    c.drawString(470, y, "Cupo")
+    c.drawString(60, y, "Nombre")
+    c.drawString(250, y, "Fecha")
+    c.drawString(315, y, "Hora")
+    c.drawString(375, y, "Modalidad")
+    c.drawString(455, y, "Estado")
+    c.drawString(520, y, "Cupo")
 
     y -= 25
     c.setFont("Helvetica", 8)
@@ -130,12 +121,12 @@ def generar_reporte(
                 c.setFont("Helvetica", 8)
                 c.setFillColor(colors.black)
 
-            c.drawString(45, y, str(e[0])[:28])
-            c.drawString(185, y, str(e[1]))
-            c.drawString(250, y, str(e[2]))
-            c.drawString(310, y, str(e[3]))
-            c.drawString(390, y, str(e[4]))
-            c.drawString(470, y, str(e[5]))
+            c.drawString(60, y, str(e[0])[:32])
+            c.drawString(250, y, str(e[1]))
+            c.drawString(315, y, str(e[2]))
+            c.drawString(375, y, str(e[3]))
+            c.drawString(455, y, str(e[4]))
+            c.drawString(520, y, f"{e[6]}/{e[5]}")
 
             y -= 18
 
