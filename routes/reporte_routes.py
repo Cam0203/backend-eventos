@@ -28,31 +28,32 @@ def generar_reporte(
             e.cupo_max,
             COUNT(i.id) AS inscritos
         FROM evento e
-        LEFT JOIN inscripcion i ON e.id = i.id_evento
+        LEFT JOIN inscribe i ON e.id = i.id_evento
         WHERE 1=1
     """
 
     params = []
 
     if estado:
-        query += " AND estado = %s"
+        query += " AND e.estado = %s"
         params.append(estado)
 
     if fecha:
-        query += " AND fecha = %s"
+        query += " AND e.fecha = %s"
         params.append(fecha)
 
     if modalidad:
-        query += " AND modalidad = %s"
+        query += " AND e.modalidad = %s"
         params.append(modalidad)
 
     if cupo_max:
-        query += " AND cupo_max = %s"
+        query += " AND e.cupo_max = %s"
         params.append(cupo_max)
 
     query += """
         GROUP BY 
-            e.nombre, e.fecha, e.hora, e.modalidad, e.estado, e.cupo_max
+            e.id, e.nombre, e.fecha, e.hora, e.modalidad, e.estado, e.cupo_max
+        ORDER BY e.fecha ASC
     """
 
     cursor.execute(query, params)
