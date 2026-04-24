@@ -75,9 +75,6 @@ def generar_reporte(
     c.setFont("Helvetica-Bold", 18)
     c.drawString(170, height - 45, "REPORTE DE EVENTOS CUL")
 
-    c.setFont("Helvetica", 9)
-    c.drawString(50, height - 65, "Sistema de Gestión de Eventos Académicos")
-
     # Inicio de tabla
     y = height - 120
 
