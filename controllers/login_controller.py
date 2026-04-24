@@ -17,5 +17,7 @@ class LoginController:
             "mensaje": "Login exitoso",
             "id_usuario": usuario["id"],
             "usuario": usuario["primer_nombre"],
+            "apellido": usuario.get("primer_apellido"),
+            "programa": usuario.get("programa"),
             "id_rol": usuario["id_rol"]
         }

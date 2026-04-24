@@ -8,10 +8,16 @@ def verificar_usuario(correo, contraseña):
     cursor = conn.cursor(cursor_factory=RealDictCursor)
 
     cursor.execute("""
-        SELECT id, primer_nombre, id_rol
-        FROM usuario
-        WHERE correo_institucional = %s
-        AND contraseña = %s;
+        SELECT 
+            u.id,
+            u.primer_nombre,
+            u.primer_apellido,
+            u.id_rol,
+            p.nombre AS programa
+        FROM usuario u
+        LEFT JOIN programa p ON u.id_programa = p.id
+        WHERE u.correo_institucional = %s
+        AND u.contraseña = %s;
     """, (correo, contraseña))
 
     usuario = cursor.fetchone()
