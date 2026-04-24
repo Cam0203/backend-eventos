@@ -18,6 +18,7 @@ from routes.opc_respuesta_routes import router as opc_respuesta_router
 from routes.respuesta_usuario_routes import router as respuesta_usuario_router
 from routes.login_routes import router as login_router
 from routes.correo_routes import router as correo_router
+from routes.reporte_routes import router as reporte_router
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -54,6 +55,7 @@ app.include_router(opc_respuesta_router)
 app.include_router(respuesta_usuario_router)
 app.include_router(login_router)
 app.include_router(correo_router)
+app.include_router(reporte_router)
 
 if __name__ == "__main__":
     import uvicorn
